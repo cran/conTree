@@ -12,7 +12,7 @@ Description: Contrast trees represent a new approach for assessing the
     free method for estimating the full probability distribution of an
     outcome variable given any set of joint input predictor variable
     values.
-Version: 0.3
+Version: 0.3-1
 VignetteBuilder: knitr
 Authors@R: c(person("Jerome", "Friedman", role=c("aut", "cph"),
 	   	   email = "jhf@stanford.edu"),
@@ -28,9 +28,9 @@ Suggests: randomForest, knitr, rmarkdown
 LazyData: true
 Depends: R (>= 3.5)
 NeedsCompilation: yes
-Packaged: 2023-06-06 13:52:02 UTC; naras
+Packaged: 2023-11-21 20:55:53 UTC; naras
 Author: Jerome Friedman [aut, cph],
   Balasubramanian Narasimhan [aut, cre]
 Maintainer: Balasubramanian Narasimhan <naras@stanford.edu>
 Repository: CRAN
-Date/Publication: 2023-06-07 13:20:05 UTC
+Date/Publication: 2023-11-22 09:20:12 UTC

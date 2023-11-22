@@ -2,7 +2,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       subroutine fcontrast (no,ni,x,y,y2,z,w,lx,mxt,itre,rtre,mxc,cat,ms
      *,isc)
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: fcontrast                                 
+      implicit integer (i-n)
       integer lx(ni),ms(no,ni,2),itre(6,mxt),isc(no)                    
       double precision x(no,ni),y(no),y2(no),z(no),w(no),rtre(4,mxt),cat
      *(mxc)
@@ -195,11 +195,9 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
 10052 continue                                                          
       return                                                            
       entry set_trm(irg)                                                
-!DEC$ ATTRIBUTES DLLEXPORT :: set_trm                                   
       mxtrm=max0(irg,2)                                                 
       return                                                            
       entry get_stor(irg1,irg2)                                         
-!DEC$ ATTRIBUTES DLLEXPORT :: get_stor                                  
       irg1=nodes                                                        
       irg2=nct-1                                                        
       return                                                            
@@ -210,6 +208,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine ans (x,itre,rtre,cat,yh)                               
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       integer itre(6,*)                                                 
       double precision x(*),rtre(4,*),cat(*)                            
       k=1                                                               
@@ -263,6 +262,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine dosort(no,ni,x,w,ms,nu,isc)                            
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       integer ms(no,ni,*),isc(no)                                       
       double precision x(no,ni),w(no)                                   
       data new /1/                                                      
@@ -310,6 +310,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       subroutine split7 (no,ni,x,y,y2,z,w,lx,m,m1,m2,  jt,sp,cri1,cri2,w
      *1,w2,crm,kct,cat)
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(maxcat=1000, big=9.9e35)                                
       integer lx(ni),m(no,ni)                                           
       double precision x(no,ni),y(no),y2(no),z(no),w(no),cat(*),tcat(max
@@ -359,21 +360,19 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       if(jt.gt.0) crm=crx                                               
       return                                                            
       entry set_miss(arg)                                               
-!DEC$ ATTRIBUTES DLLEXPORT :: set_miss                                  
       xmiss=arg                                                         
       return                                                            
       entry set_ntn(irg)                                                
-!DEC$ ATTRIBUTES DLLEXPORT :: set_ntn                                   
       ntn=max0(irg,3)                                                   
       return                                                            
       entry set_pwr(arg)                                                
-!DEC$ ATTRIBUTES DLLEXPORT :: set_pwr                                   
       pwr=arg                                                           
       return                                                            
       end                                                               
       subroutine eav (x,y,y2,z,w,m,m1,m2,ntn,pwr,xmiss,tp,  cri1s,cri2s,
      *w1s,w2s,cri)
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       integer m(*)                                                      
       double precision x(*),y(*),y2(*),z(*),w(*)                        
       data nint,icri /4,1/                                              
@@ -450,17 +449,16 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       cri=-cri                                                          
       return                                                            
       entry set_qint(irg)                                               
-!DEC$ ATTRIBUTES DLLEXPORT :: set_qint                                  
       nint=irg                                                          
       return                                                            
       entry set_cri(irg)                                                
-!DEC$ ATTRIBUTES DLLEXPORT :: set_cri                                   
       icri=irg                                                          
       return                                                            
       end                                                               
       subroutine ceav (x,y,y2,z,w,m,m1,m2,ntn,pwr,kct,cat,cri1,cri2,w1,w
      *2,cri)
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(maxcat=1000)                                            
       integer m(*),mt(maxcat)                                           
       double precision x(*),y(*),y2(*),z(*),w(*),cat(*),v(maxcat,3)     
@@ -532,7 +530,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm(n,y,y2,z,w,dst,sw)                              
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: andarm                                    
+      implicit integer (i-n)
       double precision y(n),y2(n),z(n),w(n)                             
       call set_kri(kri,2)                                               
       if(kri .ne. 1000)goto 10951                                       
@@ -589,7 +587,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine set_kri(irg,jrg)                                       
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: set_kri                                   
+      implicit integer (i-n)
       save kri                                                          
       if(jrg .ne. 1)goto 11121                                          
       kri=irg                                                           
@@ -600,12 +598,14 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm11(dst,sw)                                       
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       dst=0.0                                                           
       sw=dst                                                            
       return                                                            
       end                                                               
       subroutine andarm2(n,y,z,w,dst,sw)                                
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(nmin=100)                                               
       double precision y(n),z(n),w(n)                                   
       integer my(n),mz(n)                                               
@@ -643,7 +643,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine set_qqtrm(irg,jrg)                                     
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: set_qqtrm                                 
+      implicit integer (i-n)
       save itrm                                                         
       if(jrg .ne. 1)goto 11211                                          
       itrm=irg                                                          
@@ -654,6 +654,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm1(n,y,z,w,dst,sw)                                
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(eps=1.0e-5,nmin=100)                                    
       double precision y(n),z(n),w(n),q(2*n),w2(2*n)                    
       integer m(2*n),iq(2*n)                                            
@@ -700,6 +701,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm3(n,y,z,w,dst,sw)                                
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       double precision y(n),z(n),w(n)                                   
       sw=sum(w)                                                         
       dst=dot_product(w,abs(y-z))/sw                                    
@@ -707,6 +709,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm7(n,y,z,w,dst,sw)                                
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(nmin=20)                                                
       double precision y(n),z(n),w(n)                                   
       if(n .ge. nmin)goto 11311                                         
@@ -720,6 +723,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm12(n,y,z,w,dst,sw)                               
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(fmin=20)                                                
       double precision y(n),z(n),w(n)                                   
       if(n .ge. 2*int(fmin))goto 11331                                  
@@ -753,6 +757,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm14(n,y,z,w,dst,sw)                               
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(fmin=20,sml=-1.0e20)                                    
       double precision y(n),z(n),w(n)                                   
       if(n .ge. 2*int(fmin))goto 11411                                  
@@ -786,6 +791,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm8(n,y,z,w,dst,sw)                                
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(nmin=20,sml=-1.0e20)                                    
       double precision y(n),z(n),w(n)                                   
       if(n .ge. nmin)goto 11491                                         
@@ -799,6 +805,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm4(n,y,z,w,dst,sw)                                
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(maxclass2=10000,nmin=100,idum=2)                        
       double precision y(n),z(n),w(n),out(maxclass2),dum(2,2)           
       double precision, dimension (:,:), allocatable :: costs           
@@ -823,6 +830,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm5(n,y,z,w,dst,sw)                                
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(nmin=50)                                                
       double precision y(n),z(n),w(n)                                   
       data qntl /0.5/                                                   
@@ -840,12 +848,12 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       dst=abs(up/sw-qntl)                                               
       return                                                            
       entry set_quant(arg)                                              
-!DEC$ ATTRIBUTES DLLEXPORT :: set_quant                                 
       qntl=arg                                                          
       return                                                            
       end                                                               
       subroutine andarm6(n,y,y2,z,w,dst,sw)                             
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(nit=100,xmiss=9.0e35,thr=1.0e-2,nmin=100)               
       double precision y(n),y2(n),z(n),w(n),yy(n,2)                     
       if(n .ge. nmin)goto 11571                                         
@@ -861,6 +869,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm15(n,y,y2,z,w,dst,sw)                            
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(nit=100,xmiss=9.0e35,thr=1.0e-2,nmin=100)               
       double precision y(n),y2(n),z(n),w(n),yy(n,2)                     
       if(n .ge. nmin)goto 11591                                         
@@ -876,6 +885,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine andarm10(n,y,z,w,dst,sw)                               
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(eps=1.0e-5,nmin=100)                                    
       double precision y(n),z(n),w(n)                                   
       integer m(n)                                                      
@@ -921,6 +931,7 @@ c     mortran 2.0     (version of 7/04/75 mod 7/4/87 (ajc))
       end                                                               
       subroutine stput (iseed)                                          
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       double precision x(*)                                             
       data i /987654321/                                                
       i=iseed                                                           
@@ -943,6 +954,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine cendst(n,y,z,w,nit,thr,xmiss,dst,sw)                   
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(eps=0.1)                                                
       double precision y(n,2),z(n),w(n),b(2*n+1),q(3*n),cdf(3*n),r(n)   
       integer iq(3*n),mm(3*n),mz(n)                                     
@@ -1042,13 +1054,13 @@ c So put label on a separate continue statement
       dst=dst/spw                                                       
       return                                                            
       entry set_samp(irg)                                               
-!DEC$ ATTRIBUTES DLLEXPORT :: set_samp                                  
       nsamp=irg                                                         
       call set_samp1(nsamp)                                             
       return                                                            
       end                                                               
       subroutine cendst1(n,y,z,w,nit,thr,xmiss,dst,sw)                  
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(teps=0.01)                                              
       double precision y(n,2),z(n),w(n),b(2*n+1),cdf1(3*n),cdf2(3*n),r(n
      *)
@@ -1115,6 +1127,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine getcdf1(n,y,w,nit,thr,xmiss,nsamp,m,b,cdf,sw)          
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       parameter(teps=0.01)                                              
       double precision y(n,2),w(n),b(2*n+1),cdf(3*n)                    
       xmiss = xmiss + 0                                                 
@@ -1127,6 +1140,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine diffcdf(m,cdf1,cdf2,dst)                               
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       double precision cdf1(m),cdf2(m)                                  
       f12=sqrt(float(m))                                                
       dst=0.0                                                           
@@ -1139,6 +1153,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine unique(n,y,nu)                                         
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       double precision y(n),yu(n)                                       
       integer m(n)                                                      
       do 11961 i=1,n                                                    
@@ -1159,7 +1174,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine fintcdf1(n,y,m,b,w1,nit,thr,cdf,jt,err)                
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: fintcdf1                                  
+      implicit integer (i-n)
       double precision y(n,2),b(m),w(n),w1(n),p(m),pij(n,m),ps(m),cdf(m)
       double precision djunk(1)                                         
       integer ijunk(1)                                                  
@@ -1275,7 +1290,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine set_vrb(irg,jrg)                                       
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: set_vrb                                   
+      implicit integer (i-n)
       save ivrb                                                         
       if(jrg .ne. 1)goto 12241                                          
       ivrb=irg                                                          
@@ -1286,7 +1301,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine cdfpoints1(m,x,n,y,w,cdf)                              
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: cdfpoints1                                
+      implicit integer (i-n)
       double precision x(m),y(n),w(n),cdf(m)                            
       i=1                                                               
       j=0                                                               
@@ -1319,6 +1334,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine sort(x,n)                                              
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       double precision x(n),z(n)                                        
       integer m(n)                                                      
       do 12321 i=1,n                                                    
@@ -1335,13 +1351,14 @@ c So put label on a separate continue statement
       end                                                               
       function kbad(u)                                                  
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       kbad=0                                                            
       if(isnan(u).or.abs(u).ge.abs(huge(u))) kbad=1                     
       return                                                            
       end                                                               
       subroutine classin(ient,nclasssv,costssv,nout,out)                
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: classin                                   
+      implicit integer (i-n)
       double precision costssv(nclasssv,nclasssv),out(1)                
       double precision, dimension (:), allocatable :: costs             
       save costs,nclass                                                 
@@ -1362,6 +1379,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine reorg(ient,n,a,b)                                      
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       double precision a(n*n),b(n,n)                                    
       i=0                                                               
       if(ient .ne. 2)goto 12381                                         
@@ -1389,7 +1407,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine crinode (itr,rtr,mxnodes,node,nodes,cri,wt)            
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: crinode                                   
+      implicit integer (i-n)
       integer itr(6,*),nodes(mxnodes),m(mxnodes),ic(mxnodes)            
       double precision rtr(4,*),cri(mxnodes),wt(mxnodes),sc(mxnodes,2)  
       node=0                                                            
@@ -1438,7 +1456,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine prune1 (itr,rtr,nodes,thr,itro,rtro)                   
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: prune1                                    
+      implicit integer (i-n)
       integer itr(6,nodes)                                              
       double precision rtr(4,nodes)                                     
       integer itro(6,nodes)                                             
@@ -1450,6 +1468,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine prune (itr,rtr,nodes,thr)                              
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       integer itr(6,nodes)                                              
       double precision rtr(4,nodes)                                     
       continue                                                          
@@ -1473,6 +1492,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine getnode (x,itre,rtre,cat,node)                         
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       integer itre(6,*)                                                 
       double precision x(*),rtre(4,*),cat(*)                            
       k=1                                                               
@@ -1526,7 +1546,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine getnodes1 (no,ni,x,itre,rtre,cat,nodes)                
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: getnodes1                                 
+      implicit integer (i-n)
       integer itre(6,*),nodes(no)                                       
       double precision x(no,ni),rtre(4,*),cat(*)                        
       do 12701 i=1,no                                                   
@@ -1538,7 +1558,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine getlims(node,ni,itr,rtr,cat,nvar,jvar,vlims,jerr)      
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: getlims                                   
+      implicit integer (i-n)
       integer itr(6,*),jvar(2,*)                                        
       double precision rtr(4,*),cat(*),vlims(*)                         
       ni = ni + 0                                                       
@@ -1586,7 +1606,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine trans(ny,y,wy,nz,z,wz,nt,t)                            
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: trans                                     
+      implicit integer (i-n)
       double precision y(ny),wy(ny),z(nz),wz(nz),t(nt+2,2),u(max(ny,nz))
       double precision p(nt)                                            
       integer m(max(ny,nz))                                             
@@ -1632,6 +1652,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine qntl(n,y,w,nq,p,q)                                     
       implicit double precision(a-h,o-z)                                
+      implicit integer (i-n)
       double precision y(n),w(n),p(nq),q(nq+2)                          
       sw=sum(w)                                                         
       k=1                                                               
@@ -1652,7 +1673,7 @@ c So put label on a separate continue statement
       end                                                               
       subroutine untie(n,y,u)                                           
       implicit double precision(a-h,o-z)                                
-!DEC$ ATTRIBUTES DLLEXPORT :: untie                                     
+      implicit integer (i-n)
       double precision y(n),u(n)                                        
       i=1                                                               
       k=0                                                               
@@ -1714,7 +1735,8 @@ c So put label on a separate continue statement
       end                                                               
       subroutine psort8 (v,a,ii,jj)                                     
       implicit double precision(a-h,o-z)                                
-c                                                                       
+      implicit integer (i-n)
+c     
 c     puts into a the permutation vector which sorts v into             
 c     increasing order. the array v is not modified.                    
 c     only elements from ii to jj are considered.                       

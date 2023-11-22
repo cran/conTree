@@ -3,6 +3,7 @@
 <!-- badges: start -->
 [![R-CMD-check](https://github.com/bnaras/conTree/actions/workflows/R-CMD-check.yaml/badge.svg)](https://github.com/bnaras/conTree/actions/workflows/R-CMD-check.yaml)
 [![CRAN_Status_Badge](http://www.r-pkg.org/badges/version/conTree)](https://cran.r-project.org/package=conTree)
+[![](https://cranlogs.r-pkg.org/badges/conTree)](https://CRAN.R-project.org/package=conTree)
 <!-- badges: end -->
 
 Contrast trees are used to assess the accuracy of many types of

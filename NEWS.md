@@ -1,3 +1,7 @@
+# conTree 0.3-1
+
+- Remove Visual Fortran comments in source.
+
 # conTree 0.3
 
 - First public release
